@@ -19,7 +19,6 @@ if( ${CMAKE_SOURCE_DIR}/lib STREQUAL CMAKE_CURRENT_SOURCE_DIR )
 else()
   message(STATUS "Configuring ${PROJECT_NAME} for integrated build, expecting to find lib targets defined: ${needed_libs}")
   return()
-
 #   foreach(needed_lib ${needed_libs})
 #     set(libdir ${libs_dir}/${needed_lib})
 #     if(NOT TARGET "${needed_lib}")
@@ -52,14 +51,5 @@ download_project(PROJ                googletest
 # set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 add_subdirectory(${googletest_SOURCE_DIR} ${googletest_BINARY_DIR} EXCLUDE_FROM_ALL)
-
-
-download_project(PROJ                udevpp
-                 GIT_REPOSITORY      https://github.com/zeroping/libudevpp.git
-                 GIT_BRANCH          cmakesubmod
-                 PREFIX ${CMAKE_CURRENT_BINARY_DIR}
-                 UPDATE_DISCONNECTED 1
-)
-add_subdirectory(${udevpp_SOURCE_DIR} ${udevpp_BINARY_DIR} EXCLUDE_FROM_ALL)
 
 
