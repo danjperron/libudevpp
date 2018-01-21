@@ -1,0 +1,4 @@
+@PACKAGE_INIT@
+message("used find_package to find @PROJECT_NAME@ ")
+#include("${CMAKE_CURRENT_LIST_DIR}/@TARGETS_EXPORT_NAME@.cmake")
+check_required_components("@PROJECT_NAME@")
