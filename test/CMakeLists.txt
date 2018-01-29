@@ -12,3 +12,14 @@ target_link_libraries(device_test udevpp pthread gtest gtest_main )
 
 add_test(MonitorTest monitor_test)
 add_test(DeviceTest device_test)
+
+
+# Set up a target for 'make check' if needed
+if(NOT TARGET check)
+  add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} )
+endif()
+
+#force the 'check' target to depend on the test executables, so that we have a target that will build them in parent projects.
+add_dependencies(check monitor_test)
+add_dependencies(check device_test)
+
